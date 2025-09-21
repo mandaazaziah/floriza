@@ -5,7 +5,7 @@ class FreshFlower extends Flower {
       : super(name, price, description, imageUrl);
 
   @override
-  String getCareTips() => "Simpan di vas dengan air bersih, ganti setiap 2 hari.";
+  String getCareTips() => "Ganti air vas setiap hari agar bunga tetap segar.";
 }
 
 class DriedFlower extends Flower {
@@ -13,7 +13,7 @@ class DriedFlower extends Flower {
       : super(name, price, description, imageUrl);
 
   @override
-  String getCareTips() => "Letakkan di ruangan kering agar tidak berjamur.";
+  String getCareTips() => "Simpan di tempat kering dan hindari sinar matahari langsung.";
 }
 
 class Plant extends Flower {
@@ -21,5 +21,5 @@ class Plant extends Flower {
       : super(name, price, description, imageUrl);
 
   @override
-  String getCareTips() => "Butuh cahaya cukup dan disiram 1–2x seminggu.";
+  String getCareTips() => "Siram secukupnya dan beri cahaya matahari tidak langsung.";
 }

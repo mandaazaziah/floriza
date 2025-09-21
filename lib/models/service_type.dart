@@ -1,25 +1,17 @@
 import 'service.dart';
 
 class CustomBouquet extends Service {
-  CustomBouquet(String name, double price, String description)
-      : super(name, price, description);
+  CustomBouquet(String title, String iconPath, String description)
+      : super(title, iconPath, description);
 
   @override
-  String getServiceInfo() => "Rancang buket sesuai permintaan pelanggan.";
+  String getServiceTips() => "Pesan buket sesuai keinginanmu.";
 }
 
-class Decoration extends Service {
-  Decoration(String name, double price, String description)
-      : super(name, price, description);
+class DecorationService extends Service {
+  DecorationService(String title, String iconPath, String description)
+      : super(title, iconPath, description);
 
   @override
-  String getServiceInfo() => "Dekorasi bunga untuk event & pernikahan.";
-}
-
-class Delivery extends Service {
-  Delivery(String name, double price, String description)
-      : super(name, price, description);
-
-  @override
-  String getServiceInfo() => "Pengiriman bunga cepat & aman.";
+  String getServiceTips() => "Kami membantu dekorasi event agar lebih berkesan.";
 }

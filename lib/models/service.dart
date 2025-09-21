@@ -1,13 +1,15 @@
 class Service {
-  String _name;
-  double _price;
+  String _title;
+  String _iconPath;
   String _description;
 
-  Service(this._name, this._price, this._description);
+  Service(this._title, this._iconPath, this._description);
 
-  String get name => _name;
-  double get price => _price;
+  // Getter
+  String get title => _title;
+  String get iconPath => _iconPath;
   String get description => _description;
 
-  String getServiceInfo() => "Layanan umum Floriza.";
+  // Bisa override nanti
+  String getServiceTips() => "Layanan kami membantu mewujudkan kebutuhan Anda.";
 }
