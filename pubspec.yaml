@@ -24,14 +24,13 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/logofloriza.png
-    - assets/header.jpg
-    - assets/mawar.jpg
-    - assets/tulip.jpg
-    - assets/kaktus.jpg
-    - assets/monstera.jpg
-    - assets/premium.jpg
-    - assets/lavender.jpg
-    - assets/bday.jpg
-    - assets/pampas.jpg
+    - assets/icons/logofloriza.png
+    - assets/images/header.jpg
+    - assets/images/mawar.jpg
+    - assets/images/tulip.jpg
+    - assets/images/kaktus.jpg
+    - assets/images/monstera.jpg
+    - assets/images/lavender.jpg
+    - assets/images/pampas.jpg
     - assets/icons/iconbunga.png
+    - assets/icons/iconlayanan.png

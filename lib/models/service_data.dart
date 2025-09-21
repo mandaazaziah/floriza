@@ -4,12 +4,12 @@ import 'service.dart';
 final List<Service> serviceList = [
   CustomBouquet(
     "Custom Buket",
-    "assets/icons/bouquet.png",
+    "assets/icons/iconlayanan.png",
     "Rancang buket bunga sesuai keinginan.",
   ),
   DecorationService(
     "Dekorasi",
-    "assets/icons/decor.png",
+    "assets/icons/iconlayanan.png",
     "Layanan dekorasi untuk acara spesial.",
   ),
 ];

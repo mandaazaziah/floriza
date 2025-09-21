@@ -54,7 +54,7 @@ class _LoginPageState extends State<LoginPage> {
             constraints: const BoxConstraints(maxWidth: 400),
             child: Column(
               children: [
-                Image.asset("assets/logofloriza.png", height: 200),
+                Image.asset("assets/icons/logofloriza.png", height: 200),
                 const SizedBox(height: 32),
                 Form(
                   key: _formKey,
