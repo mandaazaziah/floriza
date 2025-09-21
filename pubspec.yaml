@@ -1,0 +1,37 @@
+name: floriza
+description: "A new Flutter project."
+
+publish_to: 'none' 
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.9.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/logofloriza.png
+    - assets/header.jpg
+    - assets/mawar.jpg
+    - assets/tulip.jpg
+    - assets/kaktus.jpg
+    - assets/monstera.jpg
+    - assets/premium.jpg
+    - assets/lavender.jpg
+    - assets/bday.jpg
+    - assets/pampas.jpg
+    - assets/icons/iconbunga.png
