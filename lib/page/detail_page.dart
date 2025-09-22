@@ -1,111 +1,99 @@
 import 'package:flutter/material.dart';
+import '../models/flower.dart';
 
 class ProductDetailPage extends StatelessWidget {
-  final Map<String, dynamic> product;
+  final Flower product;
 
-  const ProductDetailPage({Key? key, required this.product}) : super(key: key);
+  const ProductDetailPage({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF9F6F1),
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text(
-          product["name"],
-          style: const TextStyle(
-            fontWeight: FontWeight.bold,
-            color: Colors.brown,
-          ),
+          product.name,
+          style: const TextStyle(color: Colors.white), // ✅ warna font jadi putih
         ),
-        iconTheme: const IconThemeData(color: Colors.brown),
-        backgroundColor: const Color(0xFFEDE7F6),
+        backgroundColor: const Color(0xFF6F4E37),
+        iconTheme: const IconThemeData(color: Colors.white),
         elevation: 0,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
+      body: SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            // GAMBAR PRODUK
-            ClipRRect(
-              borderRadius: BorderRadius.circular(16),
-              child: Image.asset(
-                product["image"],
-                fit: BoxFit.cover,
-                width: double.infinity,
-                height: 260,
+            // ✅ Gambar utama
+            Hero(
+              tag: product.imageUrl,
+              child: ClipRRect(
+                borderRadius: const BorderRadius.vertical(bottom: Radius.circular(20)),
+                child: Image.asset(
+                  product.imageUrl,
+                  height: 250,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
             const SizedBox(height: 20),
 
-            // DETAIL PRODUK
-            Expanded(
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      product["name"],
-                      style: const TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.brown,
-                      ),
+            // ✅ Nama & harga
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    product.name,
+                    style: const TextStyle(
+                      fontSize: 26,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.brown,
                     ),
-                    const SizedBox(height: 8),
-                    Text(
-                      product["price"],
-                      style: const TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w600,
-                        color: Color(0xFF6F4E37),
-                      ),
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    "Rp ${product.price.toStringAsFixed(0)}",
+                    style: const TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.green,
                     ),
-                    const SizedBox(height: 16),
-                    const Text(
-                      "Deskripsi Produk",
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black87,
-                      ),
-                    ),
-                    const SizedBox(height: 6),
-                    Text(
-                      product["detail"],
-                      style: const TextStyle(
-                        fontSize: 14,
-                        color: Colors.black87,
-                        height: 1.5,
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                  const SizedBox(height: 16),
+                  Text(
+                    product.description,
+                    style: const TextStyle(fontSize: 15, color: Colors.black87, height: 1.4),
+                  ),
+                  const SizedBox(height: 30),
+                ],
               ),
             ),
 
-            const SizedBox(height: 16),
-
-            // TOMBOL BELI
-            SizedBox(
-              width: double.infinity,
+            // ✅ Tombol "Beli Sekarang"
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               child: ElevatedButton(
+                onPressed: () {
+                  // Untuk simpel → langsung pesan
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text("Pesanan ${product.name} berhasil dibuat!")),
+                  );
+                },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF6F4E37),
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 14, horizontal: 30),
+                  backgroundColor: Colors.brown,
+                  padding: const EdgeInsets.symmetric(vertical: 14),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
                 ),
-                onPressed: () {
-                  // TODO: aksi pembelian (misalnya tambah ke keranjang)
-                },
                 child: const Text(
                   "Beli Sekarang",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
                 ),
               ),
-            )
+            ),
+            const SizedBox(height: 20),
           ],
         ),
       ),
