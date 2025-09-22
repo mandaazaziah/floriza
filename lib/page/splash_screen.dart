@@ -62,7 +62,7 @@ class _SplashScreenState extends State<SplashScreen>
     });
 
     // pindah ke login
-    Future.delayed(const Duration(seconds: 5), () {
+    Future.delayed(const Duration(seconds: 4), () {
       if (mounted) {
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(builder: (_) => const LoginPage()),
@@ -102,8 +102,8 @@ class _SplashScreenState extends State<SplashScreen>
                 borderRadius: BorderRadius.circular(16),
                 child: Image.asset(
                   'assets/icons/logofloriza.png',
-                  height: 250,
-                  width: 250,
+                  height: 270,
+                  width: 270,
                   fit: BoxFit.cover,
                 ),
               ),
@@ -114,7 +114,7 @@ class _SplashScreenState extends State<SplashScreen>
             SlideTransition(
               position: _titleSlide,
               child: const Text(
-                "Flower Shop",
+                "Floriza",
                 style: TextStyle(
                   fontSize: 25,
                   fontWeight: FontWeight.bold,
@@ -140,7 +140,7 @@ class _SplashScreenState extends State<SplashScreen>
             SlideTransition(
               position: _creatorSlide,
               child: const Text(
-                "Created by: Manda Fatimah",
+                "Created by : Manda Fatimah Azaziah",
                 style: TextStyle(fontSize: 14, color: Colors.black54),
               ),
             ),

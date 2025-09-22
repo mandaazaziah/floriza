@@ -26,7 +26,7 @@ class DekorasiPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Paket Dekorasi"),
-        backgroundColor: const Color(0xFF6F4E37),
+        backgroundColor: const Color(0xFFE6E6FA),
       ),
       body: ListView.builder(
         padding: const EdgeInsets.all(16),
@@ -49,7 +49,7 @@ class DekorasiPage extends StatelessWidget {
                     style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
-                      color: Color(0xFF6F4E37),
+                      color: Color.fromARGB(255, 0, 0, 0),
                     ),
                   ),
                   const SizedBox(height: 6),
@@ -59,7 +59,7 @@ class DekorasiPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 6),
                   Text(
-                    "Harga: ${paket["harga"]!}",
+                    "Harga : ${paket["harga"]!}",
                     style: const TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
@@ -71,7 +71,8 @@ class DekorasiPage extends StatelessWidget {
                     alignment: Alignment.centerRight,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xFF6F4E37),
+                        backgroundColor: const Color(0xFFE6E6FA),
+                        foregroundColor: const Color.fromARGB(255, 0, 0, 0),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8),
                         ),

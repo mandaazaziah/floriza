@@ -1,4 +1,4 @@
-import 'package:floriza/home_page.dart';
+
 import 'package:flutter/material.dart';
 import '../services/auth_service.dart';
 import '../models/user.dart';
@@ -54,7 +54,7 @@ class _LoginPageState extends State<LoginPage> {
             constraints: const BoxConstraints(maxWidth: 400),
             child: Column(
               children: [
-                Image.asset("assets/icons/logofloriza.png", height: 200),
+                Image.asset("assets/icons/logofloriza.png", height: 250),
                 const SizedBox(height: 32),
                 Form(
                   key: _formKey,
@@ -64,7 +64,7 @@ class _LoginPageState extends State<LoginPage> {
                         controller: _emailCtrl,
                         decoration: const InputDecoration(
                           labelText: "Email",
-                          prefixIcon: Icon(Icons.email_rounded),
+                          prefixIcon: Icon(Icons.email),
                         ),
                         validator: (v) =>
                             (v == null || v.isEmpty) ? "Email wajib diisi" : null,
@@ -75,11 +75,11 @@ class _LoginPageState extends State<LoginPage> {
                         obscureText: _obscurePassword,
                         decoration: InputDecoration(
                           labelText: "Password",
-                          prefixIcon: const Icon(Icons.lock_rounded),
+                          prefixIcon: const Icon(Icons.lock),
                           suffixIcon: IconButton(
-                            icon: Icon(_obscurePassword
-                                ? Icons.visibility_rounded
-                                : Icons.visibility_off_rounded),
+                            icon: Icon(
+                               _obscurePassword ? Icons.visibility_off : Icons.visibility,
+                            ),
                             onPressed: () => setState(
                                 () => _obscurePassword = !_obscurePassword),
                           ),
@@ -127,9 +127,15 @@ class _LoginPageState extends State<LoginPage> {
                         child: FilledButton(
                           onPressed: _onLogin,
                           style: FilledButton.styleFrom(
-                            backgroundColor: const Color(0xFF6F4E37),
+                            backgroundColor: const Color(0xFFD8B4FE), 
                           ),
-                          child: const Text("Login"),
+                          child: const Text(
+                            "Login",
+                            style: TextStyle(
+                              color: Colors.black, 
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                         ),
                       ),
                       const SizedBox(height: 20),
@@ -137,18 +143,18 @@ class _LoginPageState extends State<LoginPage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           const Text("Belum punya akun? "),
-                          GestureDetector(
+                          InkWell(
                             onTap: () {
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(
-                                    builder: (_) => const RegisterPage()),
+                                MaterialPageRoute(builder: (_) => const RegisterPage()),
                               );
                             },
+                            mouseCursor: SystemMouseCursors.click,
                             child: Text(
                               "Daftar",
                               style: TextStyle(
-                                color: Colors.brown.shade700,
+                                color: Color(0xFFB784A7),
                                 fontWeight: FontWeight.bold,
                                 decoration: TextDecoration.underline,
                               ),

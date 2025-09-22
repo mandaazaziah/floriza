@@ -114,6 +114,7 @@ class _HomePageState extends State<HomePage> {
                 ListItem(
                   title: "Fresh Flower",
                   imagePath: "assets/icons/iconbunga.png",
+                  iconSize: 80,
                   onTap: () {
                     final freshList =
                         flowerList.where((f) => f is! Plant && f is! DriedFlower).toList();
@@ -126,9 +127,11 @@ class _HomePageState extends State<HomePage> {
                     );
                   },
                 ),
+                const SizedBox(height: 15),
                 ListItem(
                   title: "Tanaman Hias",
                   imagePath: "assets/icons/iconbunga.png",
+                  iconSize: 80,
                   onTap: () {
                     final plantList = flowerList.where((f) => f is Plant).toList();
                     Navigator.push(
@@ -140,9 +143,11 @@ class _HomePageState extends State<HomePage> {
                     );
                   },
                 ),
+                const SizedBox(height: 15),
                 ListItem(
                   title: "Bunga Kering",
                   imagePath: "assets/icons/iconbunga.png",
+                  iconSize: 80,
                   onTap: () {
                     final driedList = flowerList.where((f) => f is DriedFlower).toList();
                     Navigator.push(
@@ -154,11 +159,12 @@ class _HomePageState extends State<HomePage> {
                     );
                   },
                 ),
+                const SizedBox(height: 15),
               ],
             ),
           ),
 
-          const SizedBox(height: 50),
+          const SizedBox(height: 30),
 
           // ================= LAYANAN =================
           Container(

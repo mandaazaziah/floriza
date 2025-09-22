@@ -24,10 +24,10 @@ class _CustomBuketPageState extends State<CustomBuketPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF5EFE6), // cream soft bg
+      backgroundColor: const Color(0xFFFDFDFD), // cream soft bg
       appBar: AppBar(
         title: const Text("Custom Buket"),
-        backgroundColor: const Color(0xFF6F4E37), // coklat kopi
+        backgroundColor: const Color(0xFFE6E6FA), // coklat kopi
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
@@ -125,7 +125,9 @@ class _CustomBuketPageState extends State<CustomBuketPage> {
 
             // ===== Preview =====
             _buildSectionTitle("Preview Pesanan"),
-            Card(
+            SizedBox(
+            width: double.infinity, // ✅ biar full width kayak Pesan khusus
+            child: Card(
               margin: const EdgeInsets.symmetric(vertical: 10),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12),
@@ -135,47 +137,57 @@ class _CustomBuketPageState extends State<CustomBuketPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("🌸 Bunga: ${selectedFlower ?? "-"}"),
-                    Text("🌿 Jumlah: ${_stemsController.text.isEmpty ? "-" : _stemsController.text} tangkai"),
-                    Text("🎨 Warna: ${selectedColor ?? "-"}"),
-                    Text("✨ Aksesoris: ${_getAccessoriesText()}"),
-                    Text("💌 Pesan: ${_messageController.text.isEmpty ? "-" : _messageController.text}"),
+                    Text("🌸 Bunga : ${selectedFlower ?? "-"}"),
+                    Text("🌿 Jumlah : ${_stemsController.text.isEmpty ? "-" : _stemsController.text} tangkai"),
+                    Text("🎨 Warna : ${selectedColor ?? "-"}"),
+                    Text("✨ Aksesoris : ${_getAccessoriesText()}"),
+                    Text("💌 Pesan : ${_messageController.text.isEmpty ? "-" : _messageController.text}"),
                   ],
                 ),
               ),
             ),
+          ),
 
-            const SizedBox(height: 20),
+          const SizedBox(height: 20),
 
             // ===== Tombol Pesan =====
             SizedBox(
               width: double.infinity,
-              child: ElevatedButton(
-                onPressed: () {
-                  if (selectedFlower == null ||
-                      selectedColor == null ||
-                      _stemsController.text.isEmpty) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text("Lengkapi pilihan buket dulu ya!")),
-                    );
-                  } else {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text(
-                          "Pesanan dibuat:\n$selectedFlower - ${_stemsController.text} tangkai - $selectedColor",
+              child: MouseRegion(
+                cursor: SystemMouseCursors.click, 
+                child: ElevatedButton(
+                  onPressed: () {
+                    if (selectedFlower == null ||
+                        selectedColor == null ||
+                        _stemsController.text.isEmpty) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text("Lengkapi pilihan buket dulu ya!")),
+                      );
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(
+                            "Pesanan dibuat:\n$selectedFlower - ${_stemsController.text} tangkai - $selectedColor",
+                          ),
                         ),
-                      ),
-                    );
-                  }
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF6F4E37),
-                  padding: const EdgeInsets.symmetric(vertical: 15),
+                      );
+                    }
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFFE6E6FA),
+                    padding: const EdgeInsets.symmetric(vertical: 15),
+                  ),
+                  child: const Text(
+                    "Pesan Sekarang",
+                    style: TextStyle(
+                      color: Colors.black,       // ✅ warna teks hitam
+                      fontWeight: FontWeight.bold, // ✅ biar bold
+                    ),
+                  ),
                 ),
-                child: const Text("Pesan Sekarang"),
               ),
             ),
-          ],
+          ]
         ),
       ),
     );

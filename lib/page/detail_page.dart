@@ -6,6 +6,8 @@ class ProductDetailPage extends StatelessWidget {
 
   const ProductDetailPage({super.key, required this.product});
 
+  get flower => product;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,10 +15,10 @@ class ProductDetailPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           product.name,
-          style: const TextStyle(color: Colors.white), // ✅ warna font jadi putih
+          style: const TextStyle(color: Colors.black), // ✅ warna font jadi putih
         ),
-        backgroundColor: const Color(0xFF6F4E37),
-        iconTheme: const IconThemeData(color: Colors.white),
+        backgroundColor: const Color(0xFFE6E6FA),
+        iconTheme: const IconThemeData(color: Colors.black),
         elevation: 0,
       ),
       body: SingleChildScrollView(
@@ -46,16 +48,16 @@ class ProductDetailPage extends StatelessWidget {
                   Text(
                     product.name,
                     style: const TextStyle(
-                      fontSize: 26,
+                      fontSize: 20,
                       fontWeight: FontWeight.bold,
-                      color: Colors.brown,
+                      color: Colors.black,
                     ),
                   ),
                   const SizedBox(height: 8),
                   Text(
                     "Rp ${product.price.toStringAsFixed(0)}",
                     style: const TextStyle(
-                      fontSize: 22,
+                      fontSize: 20,
                       fontWeight: FontWeight.w600,
                       color: Colors.green,
                     ),
@@ -70,6 +72,20 @@ class ProductDetailPage extends StatelessWidget {
               ),
             ),
 
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: Text(
+                flower.getCareTips(),
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  fontSize: 14,
+                  color: Colors.grey,
+                  fontStyle: FontStyle.italic,   // biar beda dengan deskripsi
+                ),
+              ),
+            ),
+
+
             // ✅ Tombol "Beli Sekarang"
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -81,7 +97,7 @@ class ProductDetailPage extends StatelessWidget {
                   );
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.brown,
+                  backgroundColor: Color(0xFFE6E6FA),
                   padding: const EdgeInsets.symmetric(vertical: 14),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
@@ -89,7 +105,7 @@ class ProductDetailPage extends StatelessWidget {
                 ),
                 child: const Text(
                   "Beli Sekarang",
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black),
                 ),
               ),
             ),

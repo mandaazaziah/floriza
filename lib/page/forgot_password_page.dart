@@ -46,8 +46,8 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Reset Password"),
-        backgroundColor: const Color(0xFF6F4E37),
-        foregroundColor: Colors.white,
+        backgroundColor: const Color(0xFFD8B4FE),
+        foregroundColor: Colors.black,
       ),
       body: Padding(
         padding: const EdgeInsets.all(24),
@@ -107,8 +107,8 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                   width: double.infinity,
                   child: FilledButton(
                     style: FilledButton.styleFrom(
-                      backgroundColor: const Color(0xFF6D4C41),
-                      foregroundColor: Colors.white,
+                      backgroundColor: const Color(0xFFD8B4FE),
+                      foregroundColor: Colors.black,
                       padding: const EdgeInsets.symmetric(vertical: 20),
                     ),
                     onPressed: _onResetPassword,

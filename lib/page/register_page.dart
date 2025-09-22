@@ -60,8 +60,8 @@ class _RegisterPageState extends State<RegisterPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Register"),
-        backgroundColor: const Color(0xFF6F4E37),
-        foregroundColor: const Color(0xFFFDFDFD),
+        backgroundColor: const Color(0xFFD8B4FE),
+        foregroundColor: const Color.fromARGB(255, 0, 0, 0),
       ),
       body: Center(
         child: SingleChildScrollView(
@@ -79,7 +79,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     labelText: "Nama",
                     prefixIcon: Icon(Icons.person),
                     filled: true,
-                    fillColor: Color(0xFFF5EFE6),
+                    fillColor: Color.fromARGB(255, 243, 239, 250),
                   ),
                   validator: (v) =>
                       (v == null || v.isEmpty) ? "Nama wajib diisi" : null,
@@ -93,7 +93,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     labelText: "Email",
                     prefixIcon: Icon(Icons.email),
                     filled: true,
-                    fillColor: Color(0xFFF5EFE6),
+                    fillColor: Color.fromARGB(255, 243, 239, 250),
                   ),
                   validator: (v) {
                     if (v == null || v.isEmpty) return "Email wajib diisi";
@@ -113,7 +113,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     labelText: "Password",
                     prefixIcon: const Icon(Icons.lock),
                     filled: true,
-                    fillColor: const Color(0xFFF5EFE6),
+                    fillColor: const Color.fromARGB(255, 243, 239, 250),
                     suffixIcon: IconButton(
                       icon: Icon(
                         _showPassword
@@ -140,7 +140,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     labelText: "Konfirmasi Password",
                     prefixIcon: const Icon(Icons.lock),
                     filled: true,
-                    fillColor: const Color(0xFFF5EFE6),
+                    fillColor: const Color.fromARGB(255, 243, 239, 250),
                     suffixIcon: IconButton(
                       icon: Icon(
                         _showConfirmPassword
@@ -167,8 +167,8 @@ class _RegisterPageState extends State<RegisterPage> {
                 // Register Button
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF6F4E37),
-                    foregroundColor: const Color(0xFFFDFDFD),
+                    backgroundColor: const Color(0xFFD8B4FE),
+                    foregroundColor: const Color.fromARGB(255, 0, 0, 0),
                     minimumSize: const Size(double.infinity, 48),
                   ),
                 onPressed: () {

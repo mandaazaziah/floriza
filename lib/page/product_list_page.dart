@@ -20,10 +20,10 @@ class ProductListPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           title,
-          style: const TextStyle(color: Colors.white),
+          style: const TextStyle(color: Colors.black),
         ),
-        backgroundColor: const Color(0xFF6F4E37),
-        iconTheme: const IconThemeData(color: Colors.white),
+        backgroundColor: const Color(0xFFE6E6FA),
+        iconTheme: const IconThemeData(color: Colors.black),
       ),
       body: products.isEmpty
           ? const Center(child: Text("Belum ada produk"))
@@ -32,28 +32,29 @@ class ProductListPage extends StatelessWidget {
                   padding: const EdgeInsets.all(10),
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,      // ✅ 2 kolom
-                    crossAxisSpacing: 12,
-                    mainAxisSpacing: 12,
+                    crossAxisSpacing: 20,
+                    mainAxisSpacing: 20,
                     childAspectRatio: 0.75,
                   ),
                   itemCount: products.length,
                   itemBuilder: (context, index) {
                     final flower = products[index];
-                    return GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) =>
-                                ProductDetailPage(product: flower),
-                          ),
-                        );
-                      },
-                      child: Card(
-                        elevation: 4, 
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
+                    return Card(
+                      elevation: 4,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: InkWell(
+                        borderRadius: BorderRadius.circular(12),
+                        mouseCursor: SystemMouseCursors.click, // ✅ bikin cursor jadi tangan
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ProductDetailPage(product: flower),
+                            ),
+                          );
+                        },
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
