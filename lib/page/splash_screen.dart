@@ -27,7 +27,7 @@ class _SplashScreenState extends State<SplashScreen>
   void initState() {
     super.initState();
 
-    // LOGO animasi (scale)
+    // LOGO animasi 
     _logoController =
         AnimationController(vsync: this, duration: const Duration(seconds: 2));
     _logoScale = Tween<double>(begin: 0.5, end: 1.0).animate(
@@ -35,21 +35,20 @@ class _SplashScreenState extends State<SplashScreen>
     );
     _logoController.forward();
 
-    // TITLE animasi (slide dari atas)
+    // TITLE animasi 
     _titleController =
         AnimationController(vsync: this, duration: const Duration(seconds: 2));
     _titleSlide = Tween<Offset>(begin: const Offset(0, -1), end: Offset.zero)
         .animate(CurvedAnimation(parent: _titleController, curve: Curves.easeOut));
     _titleController.forward();
 
-    // CREATOR animasi (slide dari bawah)
     _creatorController =
         AnimationController(vsync: this, duration: const Duration(seconds: 2));
     _creatorSlide = Tween<Offset>(begin: const Offset(0, 1), end: Offset.zero)
         .animate(CurvedAnimation(parent: _creatorController, curve: Curves.easeOut));
     _creatorController.forward();
 
-    // TAGLINE animasi ketik
+    // TAGLINE animasi 
     Timer.periodic(const Duration(milliseconds: 600), (timer) {
       if (wordIndex < words.length) {
         setState(() {
@@ -95,7 +94,7 @@ class _SplashScreenState extends State<SplashScreen>
           children: [
             const Spacer(flex: 2),
 
-            // LOGO (scale)
+            // LOGO 
             ScaleTransition(
               scale: _logoScale,
               child: ClipRRect(
@@ -110,7 +109,7 @@ class _SplashScreenState extends State<SplashScreen>
             ),
             const SizedBox(height: 20),
 
-            // TITLE (slide dari atas)
+            // TITLE 
             SlideTransition(
               position: _titleSlide,
               child: const Text(
@@ -124,7 +123,7 @@ class _SplashScreenState extends State<SplashScreen>
             ),
             const SizedBox(height: 8),
 
-            // TAGLINE (fade in dengan ketik per kata)
+            // TAGLINE 
             Text(
               displayedText,
               style: const TextStyle(
@@ -136,7 +135,7 @@ class _SplashScreenState extends State<SplashScreen>
 
             const Spacer(flex: 3),
 
-            // CREATOR (slide dari bawah)
+            // CREATOR 
             SlideTransition(
               position: _creatorSlide,
               child: const Text(

@@ -6,17 +6,23 @@ class DekorasiPage extends StatelessWidget {
   final List<Map<String, String>> paketDekorasi = const [
     {
       "nama": "Dekorasi Ulang Tahun",
-      "deskripsi": "Balon warna-warni, meja kue, dan backdrop sederhana.",
+      "deskripsi": "Dekorasi ulang tahun dengan balon warna-warni, backdrop cantik, "
+        "meja kue yang dihias rapi, serta tambahan ornamen sesuai tema pilihan. "
+        "Cocok untuk pesta anak-anak maupun perayaan dewasa agar suasana lebih meriah dan berkesan.",
       "harga": "Rp 500.000"
     },
     {
       "nama": "Dekorasi Pernikahan",
-      "deskripsi": "Bunga segar, pelaminan, dan pencahayaan romantis.",
+      "deskripsi": "Paket dekorasi pernikahan mewah dengan rangkaian bunga segar, "
+        "pelaminan elegan, pencahayaan romantis, serta sentuhan detail artistik "
+        "pada meja tamu dan jalan pengantin. Dirancang untuk menciptakan suasana sakral, indah, dan tak terlupakan.",
       "harga": "Rp 5.000.000"
     },
     {
       "nama": "Dekorasi Event Kantor",
-      "deskripsi": "Tanaman hias kecil, bunga segar, dan penataan meja kerja.",
+      "deskripsi": "Dekorasi khusus acara kantor dengan penataan tanaman hias kecil, "
+        "rangkaian bunga segar, backdrop profesional, serta penataan meja kerja yang rapi. "
+        "Memberikan kesan formal namun tetap hangat, ideal untuk seminar, rapat penting, atau gathering perusahaan.",
       "harga": "Rp 300.000"
     },
   ];

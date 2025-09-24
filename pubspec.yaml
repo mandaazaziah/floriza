@@ -23,9 +23,18 @@ dev_dependencies:
 flutter:
   uses-material-design: true
 
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/Poppins-Regular.ttf
+        - asset: assets/fonts/Poppins-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Poppins-Italic.ttf
+          style: italic
+
   assets:
     - assets/icons/logofloriza.png
-    - assets/images/header.jpg
+    - assets/images/gambartoko.png
     - assets/images/mawar.jpg
     - assets/images/tulip.jpg
     - assets/images/kaktus.jpg
@@ -34,5 +43,8 @@ flutter:
     - assets/images/lily.jpg
     - assets/images/breath.jpg
     - assets/images/anggrek.jpg
+    - assets/images/matahari.jpg
+    - assets/images/pampas.jpg
+    - assets/images/peacelily.jpg
     - assets/icons/iconbunga.png
     - assets/icons/iconlayanan.png

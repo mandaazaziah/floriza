@@ -28,6 +28,14 @@ final List<Flower> flowerList = [
     "assets/images/lily.jpg",
   ),
 
+  FreshFlower(
+    "Matahari",
+    27000,
+    "Bunga matahari segar dengan kelopak kuning cerah yang melambangkan kebahagiaan, "
+    "kehangatan, dan energi positif. Cocok sebagai hadiah penyemangat atau dekorasi ruangan agar terasa ceria.",
+    "assets/images/matahari.jpg",
+  ),
+
   // Dried Flowers
   DriedFlower(
     "Lavender Kering",
@@ -42,6 +50,15 @@ final List<Flower> flowerList = [
     "Sering digunakan sebagai pelengkap rangkaian bunga kering atau pajangan vas minimalis "
     "untuk memberi kesan simpel, natural, dan elegan.",
     "assets/images/breath.jpg",
+  ),
+
+   DriedFlower(
+    "Pampas Grass",
+    38000,
+    "Rumput pampas kering dengan tekstur lembut dan warna krem natural. "
+    "Sangat populer untuk dekorasi modern, minimalis, maupun bohemian. "
+    "Cocok untuk vas tinggi, sudut ruangan, atau properti foto.",
+    "assets/images/pampas.jpg",
   ),
 
   // Plants
@@ -68,5 +85,14 @@ final List<Flower> flowerList = [
     "Melambangkan kemewahan, kebijaksanaan, dan kekaguman, "
     "sering digunakan untuk mempercantik ruangan atau sebagai hadiah berkesan.",
     "assets/images/anggrek.jpg",
+  ),
+
+  Plant(
+    "Peace Lily",
+    48000,
+    "Peace Lily dengan daun hijau rimbun dan bunga putih elegan. "
+    "Dikenal sebagai penyaring udara alami, tanaman ini cocok diletakkan di ruang tamu, kantor, atau kamar tidur "
+    "untuk menciptakan suasana segar dan menenangkan.",
+    "assets/images/peacelily.jpg",
   ),
 ];

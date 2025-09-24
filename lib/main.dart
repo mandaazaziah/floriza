@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-
-// pastikan path ini sesuai folder project kamu
 import 'page/splash_screen.dart';
 import 'page/login_page.dart';
 import 'page/register_page.dart';
@@ -20,6 +18,19 @@ class FlorizaApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Floriza - Toko Bunga',
       theme: ThemeData(
+        fontFamily: "Poppins",
+        appBarTheme: const AppBarTheme(
+        backgroundColor: Colors.white, // semua AppBar putih
+        elevation: 0,
+        centerTitle: false,
+        iconTheme: IconThemeData(color: Colors.black), // ikon back hitam
+        titleTextStyle: TextStyle(
+          color: Colors.black, // semua judul AppBar hitam
+          fontWeight: FontWeight.bold,
+          fontSize: 20,
+          fontFamily: "Poppins",
+        ),
+      ),
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(
           seedColor: seed,

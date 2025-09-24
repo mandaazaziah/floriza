@@ -1,4 +1,4 @@
-import 'package:floriza/page/service_page.dart' hide CustomBuketPage, DekorasiPage;
+import 'package:floriza/models/flower.dart';
 import 'package:flutter/material.dart';
 import '../models/flower_data.dart';
 import '../models/flower_type.dart';
@@ -20,23 +20,54 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
 
-  late final List<Widget> _pages;
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   @override
-  void initState() {
-    super.initState();
-    _pages = [
-      _buildHomeContent(), // isi homepage
+  Widget build(BuildContext context) {
+    // definisikan halaman di sini agar context sudah siap
+    final List<Widget> pages = [
+      _buildHomeContent(context),
       ProductListPage(
         title: "Semua Produk",
         products: flowerList,
-        useGrid: true, // ✅ taruh di sini
+        useGrid: true,
+        showSearch: true,
       ),
       const Center(child: Text("Profil Saya")),
     ];
+
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: pages[_selectedIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedIndex,
+        selectedItemColor: const Color(0xFF6F4E37),
+        unselectedItemColor: Colors.grey,
+        onTap: _onItemTapped,
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: "Homepage",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.local_florist),
+            label: "Produk",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: "Profil",
+          ),
+        ],
+      ),
+    );
   }
 
-  Widget _buildHomeContent() {
+  // ✅ build home content
+  Widget _buildHomeContent(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -45,17 +76,18 @@ class _HomePageState extends State<HomePage> {
           Stack(
             children: [
               Container(
-                height: 230,
+                height: 250,
                 width: double.infinity,
                 decoration: const BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage("assets/images/header.jpg"),
+                    image: AssetImage("assets/images/gambartoko.png"),
                     fit: BoxFit.cover,
                   ),
                 ),
               ),
+              const SizedBox(height: 16),
               Container(
-                height: 230,
+                height: 250,
                 width: double.infinity,
                 color: Colors.black.withOpacity(0.3),
                 child: Column(
@@ -71,7 +103,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     const SizedBox(height: 6),
                     Text(
-                      widget.email, // ✅ pakai widget.email
+                      widget.email,
                       style: const TextStyle(
                         color: Colors.white70,
                         fontSize: 14,
@@ -90,8 +122,39 @@ class _HomePageState extends State<HomePage> {
               ),
             ],
           ),
+          const SizedBox(height: 30),
+
+          // ================= PROMO CARD =================
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 20),
+            child: Center(
+              child: Wrap(
+                spacing: 16,
+                runSpacing: 16,
+                alignment: WrapAlignment.center,
+                children: [
+                  _buildPromoCard(
+                    context,
+                    icon: Icons.local_offer,
+                    text: "Diskon 20% Custom Buket",
+                  ),
+                  _buildPromoCard(
+                    context,
+                    icon: Icons.card_giftcard,
+                    text: "Gratis Kartu Ucapan",
+                  ),
+                  _buildPromoCard(
+                    context,
+                    icon: Icons.star,
+                    text: "Diskon Member Baru",
+                  ),
+                ],
+              ),
+            ),
+          ),
 
           // ================= KATEGORI PRODUK =================
+          const SizedBox(height: 20),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 30),
             child: Center(
@@ -100,13 +163,13 @@ class _HomePageState extends State<HomePage> {
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
-                  color: const Color(0xFF6F4E37),
+                  color: Color(0xFF6F4E37),
                 ),
               ),
             ),
           ),
+          const SizedBox(height: 12),
 
-          // ----- tampilkan kategori sebagai list card -----
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(
@@ -116,49 +179,67 @@ class _HomePageState extends State<HomePage> {
                   imagePath: "assets/icons/iconbunga.png",
                   iconSize: 80,
                   onTap: () {
-                    final freshList =
-                        flowerList.where((f) => f is! Plant && f is! DriedFlower).toList();
+                    final freshList = flowerList
+                        .where((f) => f is! Plant && f is! DriedFlower)
+                        .toList();
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (_) =>
-                            ProductListPage(title: "Fresh Flower", products: freshList),
+                        builder: (_) => ProductListPage(
+                          title: "Fresh Flower",
+                          products: freshList,
+                          useGrid: false,
+                          showSearch: false,
+                        ),
                       ),
                     );
                   },
                 ),
+
                 const SizedBox(height: 15),
                 ListItem(
                   title: "Tanaman Hias",
                   imagePath: "assets/icons/iconbunga.png",
                   iconSize: 80,
                   onTap: () {
-                    final plantList = flowerList.where((f) => f is Plant).toList();
+                    final plantList =
+                        flowerList.where((f) => f is Plant).toList();
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (_) =>
-                            ProductListPage(title: "Tanaman Hias", products: plantList),
+                        builder: (_) => ProductListPage(
+                          title: "Tanaman Hias",
+                          products: plantList,
+                          useGrid: false,
+                          showSearch: false, 
+                        ),
                       ),
                     );
                   },
                 ),
+
                 const SizedBox(height: 15),
                 ListItem(
                   title: "Bunga Kering",
                   imagePath: "assets/icons/iconbunga.png",
                   iconSize: 80,
                   onTap: () {
-                    final driedList = flowerList.where((f) => f is DriedFlower).toList();
+                    final driedList =
+                        flowerList.where((f) => f is DriedFlower).toList();
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (_) =>
-                            ProductListPage(title: "Bunga Kering", products: driedList),
+                        builder: (_) => ProductListPage(
+                          title: "Bunga Kering",
+                          products: driedList,
+                          useGrid: false,
+                          showSearch: false, 
+                        ),
                       ),
                     );
                   },
                 ),
+
                 const SizedBox(height: 15),
               ],
             ),
@@ -182,7 +263,7 @@ class _HomePageState extends State<HomePage> {
                     color: Color(0xFF6F4E37),
                   ),
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 12),
                 Column(
                   children: serviceList.map((service) {
                     return ListItem(
@@ -192,12 +273,14 @@ class _HomePageState extends State<HomePage> {
                         if (service.title == "Custom Buket") {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => CustomBuketPage()),
+                            MaterialPageRoute(
+                                builder: (context) => CustomBuketPage()),
                           );
                         } else if (service.title == "Dekorasi") {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => DekorasiPage()),
+                            MaterialPageRoute(
+                                builder: (context) => DekorasiPage()),
                           );
                         } else {
                           ScaffoldMessenger.of(context).showSnackBar(
@@ -215,38 +298,53 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+}
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
+// ================= PROMO CARD =================
+Widget _buildPromoCard(
+  BuildContext context, {
+  required IconData icon,
+  required String text,
+  Color? color,
+}) {
+  double screenWidth = MediaQuery.of(context).size.width;
+  double cardWidth = screenWidth > 800
+      ? 220
+      : screenWidth > 500
+          ? 180
+          : 140;
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: _pages[_selectedIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectedIndex,
-        selectedItemColor: const Color(0xFF6F4E37),
-        unselectedItemColor: Colors.grey,
-        onTap: _onItemTapped,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: "Homepage",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.local_florist),
-            label: "Produk",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: "Profil",
+  return SizedBox(
+    width: cardWidth,
+    child: Container(
+      decoration: BoxDecoration(
+        color: color ?? const Color(0xFFFDF6EC),
+        borderRadius: BorderRadius.circular(12),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.08),
+            blurRadius: 6,
+            offset: const Offset(2, 4),
           ),
         ],
       ),
-    );
-  }
+      padding: const EdgeInsets.all(12),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(icon, color: const Color.fromARGB(135, 75, 33, 33), size: 22),
+          const SizedBox(height: 8),
+          Text(
+            text,
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+              fontWeight: FontWeight.w600,
+              fontSize: 12,
+              color: Color(0xFF6F4E37),
+            ),
+          ),
+        ],
+      ),
+    ),
+  );
 }
