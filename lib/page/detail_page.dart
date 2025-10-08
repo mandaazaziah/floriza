@@ -91,7 +91,6 @@ class ProductDetailPage extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: ElevatedButton(
                 onPressed: () {
-                  // Untuk simpel → langsung pesan
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(content: Text("Pesanan ${product.name} berhasil dibuat!")),
                   );

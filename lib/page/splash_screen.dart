@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'login_page.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -135,6 +136,12 @@ class _SplashScreenState extends State<SplashScreen>
 
             const Spacer(flex: 3),
 
+            const SpinKitFadingCircle(
+              color: Color(0xFFB784A7),
+              size: 40.0,
+            ),
+
+            const Spacer(),
             // CREATOR 
             SlideTransition(
               position: _creatorSlide,
