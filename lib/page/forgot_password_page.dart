@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import '../services/auth_service.dart';
 
 class ForgotPasswordPage extends StatefulWidget {
-  const ForgotPasswordPage({super.key});
+  final bool fromProfile; 
+  const ForgotPasswordPage({super.key, this.fromProfile = false});
 
   @override
   State<ForgotPasswordPage> createState() => _ForgotPasswordPageState();
@@ -21,7 +22,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   void _onResetPassword() {
     if (_formKey.currentState!.validate()) {
       bool success =
-          _authService.resetPassword(_emailCtrl.text, _newPasswordCtrl.text);
+          _authService.resetPassword(_emailCtrl.text, _newPasswordCtrl.text) as bool;
       if (success) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
@@ -34,7 +35,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
             content: Text("Email tidak terdaftar."),
-            backgroundColor: Colors.red,
+            backgroundColor: Color(0xFFD32F2F),
           ),
         );
       }
@@ -45,7 +46,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Reset Password"),
+        title: Text(widget.fromProfile ? "Ubah Password" : "Reset Password"),
         backgroundColor: const Color(0xFFD8B4FE),
         foregroundColor: Colors.black,
       ),
@@ -63,8 +64,15 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                     labelText: "Email",
                     prefixIcon: Icon(Icons.email),
                   ),
-                  validator: (v) =>
-                      (v == null || v.isEmpty) ? "Email wajib diisi" : null,
+                  validator: (v) {
+                    if (v == null || v.trim().isEmpty) return "Email wajib diisi";
+                    final email = v.trim().toLowerCase();
+                    final emailRegex = RegExp(r'^[\w\.\+\-]+@gmail\.com$');
+                    if (!emailRegex.hasMatch(email)) {
+                      return "Gunakan alamat Gmail yang valid (akhiran @gmail.com)";
+                    }
+                    return null;
+                  },
                 ),
                 const SizedBox(height: 16),
                 TextFormField(
@@ -112,7 +120,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                       padding: const EdgeInsets.symmetric(vertical: 20),
                     ),
                     onPressed: _onResetPassword,
-                    child: const Text("Reset Password"),
+                    child: Text(widget.fromProfile ? "Simpan Perubahan" : "Reset Password"),
                   ),
                 ),
               ],

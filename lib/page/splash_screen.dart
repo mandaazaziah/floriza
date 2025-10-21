@@ -146,7 +146,7 @@ class _SplashScreenState extends State<SplashScreen>
             SlideTransition(
               position: _creatorSlide,
               child: const Text(
-                "Created by : Manda Fatimah Azaziah",
+                "Created by : Manda",
                 style: TextStyle(fontSize: 14, color: Colors.black54),
               ),
             ),

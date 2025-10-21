@@ -3,6 +3,7 @@ import 'page/splash_screen.dart';
 import 'page/login_page.dart';
 import 'page/register_page.dart';
 import 'page/home_page.dart' as floriza;
+import 'page/profile_page.dart';
 
 void main() {
   runApp(const FlorizaApp());
@@ -13,19 +14,19 @@ class FlorizaApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const seed = Color(0xFFD8B4FE); // ungu pastel
+    const seed = Color(0xFFD8B4FE); 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Floriza - Toko Bunga',
       theme: ThemeData(
         fontFamily: "Poppins",
         appBarTheme: const AppBarTheme(
-        backgroundColor: Colors.white, // semua AppBar putih
+        backgroundColor: Colors.white, 
         elevation: 0,
         centerTitle: false,
-        iconTheme: IconThemeData(color: Colors.black), // ikon back hitam
+        iconTheme: IconThemeData(color: Colors.black), 
         titleTextStyle: TextStyle(
-          color: Colors.black, // semua judul AppBar hitam
+          color: Colors.black, 
           fontWeight: FontWeight.bold,
           fontSize: 20,
           fontFamily: "Poppins",
@@ -42,7 +43,7 @@ class FlorizaApp extends StatelessWidget {
         ),
         inputDecorationTheme: const InputDecorationTheme(
           filled: true,
-          fillColor: Color(0xFFF3E8FF), // ungu pastel muda
+          fillColor: Color(0xFFF3E8FF), 
           border: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(16)),
             borderSide: BorderSide.none,
@@ -51,16 +52,14 @@ class FlorizaApp extends StatelessWidget {
         ),
       ),
 
-      // halaman awal
       home: const SplashScreen(),
 
-      // route sederhana
       routes: {
         '/login': (context) => const LoginPage(),
         '/register': (context) => const RegisterPage(),
+        '/profile': (context) => const ProfilePage(), 
       },
 
-      // route dengan argumen (misal ke HomePage)
       onGenerateRoute: (settings) {
         if (settings.name == '/home') {
           final args = settings.arguments;
@@ -68,7 +67,7 @@ class FlorizaApp extends StatelessWidget {
           if (args is Map<String, dynamic>) {
             return MaterialPageRoute(
               builder: (context) => floriza.HomePage(
-                email: args['email'] ?? '', // default aman
+                email: args['email'] ?? '', 
               ),
             );
           } else {

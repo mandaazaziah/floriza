@@ -1,10 +1,9 @@
-
 import 'package:flutter/material.dart';
 import '../services/auth_service.dart';
-import '../models/user.dart';
 import 'forgot_password_page.dart';
 import '../page/register_page.dart';
 import 'home_page.dart'; 
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -22,25 +21,31 @@ class _LoginPageState extends State<LoginPage> {
   bool _obscurePassword = true;
   bool _rememberMe = false;
 
-  void _onLogin() {
-    if (_formKey.currentState!.validate()) {
-      final user =
-          _authService.login(_emailCtrl.text.trim(), _passwordCtrl.text.trim());
-      if (user != null) {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (_) => HomePage(email: _emailCtrl.text.trim())),
-        );
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text("Email atau Password salah"),
-            backgroundColor: Colors.red,
-          ),
-        );
-      }
+  void _onLogin() async {
+  if (_formKey.currentState!.validate()) {
+    final success = await _authService.login(
+      _emailCtrl.text.trim(),
+      _passwordCtrl.text.trim(),
+    );
+
+    if (success) {
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setBool('isLoggedIn', true);
+
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (_) => HomePage(email: _emailCtrl.text.trim())),
+      );
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text("Akun belum terdaftar atau password salah"),
+          backgroundColor: Color(0xFFD32F2F),
+        ),
+      );
     }
   }
+}
 
   @override
   Widget build(BuildContext context) {
@@ -66,8 +71,15 @@ class _LoginPageState extends State<LoginPage> {
                           labelText: "Email",
                           prefixIcon: Icon(Icons.email),
                         ),
-                        validator: (v) =>
-                            (v == null || v.isEmpty) ? "Email wajib diisi" : null,
+                        validator: (v) {
+                          if (v == null || v.trim().isEmpty) return "Email wajib diisi";
+                          final email = v.trim().toLowerCase();
+                          final emailRegex = RegExp(r'^[\w\.\+\-]+@gmail\.com$');
+                          if (!emailRegex.hasMatch(email)) {
+                            return "Gunakan alamat Gmail yang valid (akhiran @gmail.com)";
+                          }
+                          return null;
+                        },
                       ),
                       const SizedBox(height: 16),
                       TextFormField(
@@ -113,7 +125,7 @@ class _LoginPageState extends State<LoginPage> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (_) => const ForgotPasswordPage()),
+                                  builder: (_) => const ForgotPasswordPage()),
                               );
                             },
                             child: const Text("Lupa Password?"),

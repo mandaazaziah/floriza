@@ -11,5 +11,7 @@ class Flower {
   String get description => _description;
   String get imageUrl => _imageUrl;
 
+  get image => null;
+
   String getCareTips() => "Rawat bunga agar tetap segar.";
 }

@@ -36,6 +36,30 @@ final List<Flower> flowerList = [
     "assets/images/matahari.jpg",
   ),
 
+  FreshFlower(
+    "Mawar Putih",
+    26000,
+    "Mawar putih yang melambangkan kemurnian, keikhlasan, dan awal yang baru. "
+    "Ideal untuk acara pernikahan atau hadiah perdamaian.",
+    "assets/images/mawarputih.jpg",
+  ),
+
+  FreshFlower(
+    "Gerbera Orange",
+    23000,
+    "Gerbera berwarna oranye cerah yang penuh semangat dan optimisme. "
+    "Cocok untuk hadiah penyemangat atau ucapan selamat.",
+    "assets/images/gerbera.jpg",
+  ),
+
+  FreshFlower(
+    "Daisy Putih",
+    22000,
+    "Daisy putih lembut yang melambangkan kesucian dan kepolosan. "
+    "Sempurna untuk hadiah ringan atau dekorasi vas.",
+    "assets/images/daisy.jpg",
+  ),
+
   // Dried Flowers
   DriedFlower(
     "Lavender Kering",
@@ -59,6 +83,22 @@ final List<Flower> flowerList = [
     "Sangat populer untuk dekorasi modern, minimalis, maupun bohemian. "
     "Cocok untuk vas tinggi, sudut ruangan, atau properti foto.",
     "assets/images/pampas.jpg",
+  ),
+
+   DriedFlower(
+    "Ruscus Kering Putih",
+    40000,
+    "Ruscus kering berwarna putih susu yang memberi nuansa bersih dan mewah. "
+    "Cocok untuk vas tinggi atau dekorasi dinding.",
+    "assets/images/ruscus.jpg",
+  ),
+
+  DriedFlower(
+    "Cotton Flower Kering",
+    46000,
+    "Bunga kapas kering alami yang lembut dan estetik. "
+    "Melambangkan kemurnian dan kesederhanaan, cocok untuk dekorasi rustic modern.",
+    "assets/images/cotton.jpg",
   ),
 
   // Plants
@@ -94,5 +134,21 @@ final List<Flower> flowerList = [
     "Dikenal sebagai penyaring udara alami, tanaman ini cocok diletakkan di ruang tamu, kantor, atau kamar tidur "
     "untuk menciptakan suasana segar dan menenangkan.",
     "assets/images/peacelily.jpg",
+  ),
+
+  Plant(
+    "Aglonema Red",
+    42000,
+    "Tanaman hias dengan daun merah kehijauan yang memukau. "
+    "Simbol keberuntungan dan cocok untuk dekorasi rumah modern.",
+    "assets/images/aglaonema.jpg",
+  ),
+
+  Plant(
+    "Calathea Orbifolia",
+    49000,
+    "Tanaman dengan daun lebar berpola garis perak. "
+    "Memberi nuansa tropis elegan dan menenangkan.",
+    "assets/images/calathea.jpg",
   ),
 ];

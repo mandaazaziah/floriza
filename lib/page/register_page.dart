@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../models/user.dart';
 import '../services/auth_service.dart';
 import 'login_page.dart';
 
@@ -14,7 +13,7 @@ class _RegisterPageState extends State<RegisterPage> {
   final _formKey = GlobalKey<FormState>();
 
   final _usernameController = TextEditingController();
-  final _emailController = TextEditingController();
+  final _emailController = TextEditingController(); 
   final _passwordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
 
@@ -22,38 +21,6 @@ class _RegisterPageState extends State<RegisterPage> {
   bool _showConfirmPassword = false;
 
   final AuthService _authService = AuthService();
-
-  void _onRegister() {
-    if (_formKey.currentState!.validate()) {
-      final newUser = User(
-        username: _usernameController.text,
-        email: _emailController.text,
-        password: _passwordController.text,
-      );
-
-      final success = _authService.register(newUser);
-
-      if (success) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text("Registrasi berhasil! Silakan login."),
-            backgroundColor: Colors.green,
-          ),
-        );
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (_) => const LoginPage()),
-        );
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text("Email sudah terdaftar."),
-            backgroundColor: Colors.red,
-          ),
-        );
-      }
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -171,26 +138,31 @@ class _RegisterPageState extends State<RegisterPage> {
                     foregroundColor: const Color.fromARGB(255, 0, 0, 0),
                     minimumSize: const Size(double.infinity, 48),
                   ),
-                onPressed: () {
+                  onPressed: () async {
                     if (_formKey.currentState!.validate()) {
-                      // ✅ Simpan ke model User
-                      User newUser = User(
-                        username: _usernameController.text,
-                        email: _emailController.text,
-                        password: _passwordController.text,
+                      await _authService.register(
+                        _usernameController.text.trim(),
+                        _emailController.text.trim(),
+                        _passwordController.text.trim(),
                       );
-
-                      // Bisa disimpan sementara di memory atau kirim ke DB nanti
-                      print("User registered: ${newUser.username}, ${newUser.email}");
 
                       ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text("Registrasi berhasil!")),
+                        const SnackBar(content: Text("Pendaftaran berhasil, silakan login")),
                       );
 
-                      Navigator.pushReplacementNamed(context, '/login');
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (_) => const LoginPage()),
+                      );
                     }
                   },
-                  child: const Text("Register"),
+                  child: const Text(
+                    "Register",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                    ),
+                  ),
                 ),
               ],
             ),

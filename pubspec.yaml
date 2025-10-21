@@ -12,8 +12,11 @@ dependencies:
   flutter:
     sdk: flutter
 
-  cupertino_icons: ^1.0.8
   flutter_spinkit: ^5.2.2
+  convex_bottom_bar: ^3.2.0
+  flutter_scroll_to_top: ^2.2.4
+  shared_preferences: ^2.3.0
+  flutter_datetime_picker_plus: ^2.1.0
   flutter_rating_bar: ^4.0.1
 
 dev_dependencies:
@@ -50,3 +53,11 @@ flutter:
     - assets/images/peacelily.jpg
     - assets/icons/iconbunga.png
     - assets/icons/iconlayanan.png
+    - assets/icons/iconprofil.png
+    - assets/images/aglaonema.jpg
+    - assets/images/calathea.jpg
+    - assets/images/cotton.jpg
+    - assets/images/daisy.jpg
+    - assets/images/gerbera.jpg
+    - assets/images/mawarputih.jpg
+    - assets/images/ruscus.jpg
